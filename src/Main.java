@@ -11,14 +11,21 @@ public class Main {
 
         int numeroSecreto = sorteador.nextInt(99);
         int totalDeTentativas = 5;
+        int tentativa = 0;
 
         for (int i = 0; i < totalDeTentativas; i++) {
-            int tentativas = 1;
 
-            System.out.println();
+            tentativa++;
+
+            String cabecalhoNumeroDeTentativas = """
+                    Tentativa %d de %d
+                    """.formatted(tentativa, totalDeTentativas);
+
+            System.out.print(cabecalhoNumeroDeTentativas);
             System.out.print("Tente adivinhar o número secreto entre 0 e 99: ");
             int palpite = leitura.nextInt();
-            if(palpite == numeroSecreto) {
+            boolean acertou = palpite == numeroSecreto;
+            if(acertou) {
                 System.out.println("Parabéns, você adivinhou o número secreto!");
             } else {
                 boolean maior = palpite < numeroSecreto;
@@ -29,6 +36,7 @@ public class Main {
                 }
             }
         }
+        System.out.println("O número secreto era " + numeroSecreto);
         System.out.println("Fim de Jogo");
     }
 }
